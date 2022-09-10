@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
 // get one tag
 router.get('/:id', (req, res) => {
-  Category.findOne({
+  Tag.findOne({
     where: {
       id: req.params.id
     },
