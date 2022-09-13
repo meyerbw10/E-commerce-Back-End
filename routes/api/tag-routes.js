@@ -33,20 +33,8 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/', (req, res) => {
-  Product.create(req.body)
-    .then((tag) => {
-      if (req.body.id.length) {
-        const tagIdArr = req.body.id.map((id) => {
-          return {
-            id: req.params.id ,
-            tag_name,
-          };
-        });
-        return Tag.bulkCreate(tagIdArr);
-      }
-      res.status(200).json(tag);
-    })
-    .then((tagIds) => res.status(200).json(tagIds))
+  Tag.create(req.body)
+    .then((tag) => res.status(200).json(tag))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
@@ -58,35 +46,12 @@ router.post('/', (req, res) => {
 
 //tweak this
 router.put('/:id', (req, res) => {
-  Product.update(req.body, {
+  Tag.update(req.body, {
     where: {
       id: req.params.id,
     },
   })
-    .then((tag) => {
-      return Tag.findAll({ where: { tag_name: req.params.id } });
-    })
-    .then((tagsz) => {
-      const tagIds = tagsz.map(({ tag_name }) => tag_name);
-      const newtags = req.body.tag_name
-        .filter((tag_name) => !tagIds.includes(tag_name))
-        .map((tag_name) => {
-          return {
-            id: req.params.id ,
-            tag_name,
-          };
-        });
-
-      const tagsToRemove = tagsz
-        .filter(({ tag_name }) => !req.body.id.includes(id))
-        .map(({ id }) => id);
-
-      return Promise.all([
-        ProductTag.destroy({ where: { id: tagsToRemove } }),
-        ProductTag.bulkCreate(newtags),
-      ]);
-    })
-    .then((updatedtags) => res.json(updatedtags))
+    .then((tag) => res.json(tag))
     .catch((err) => {
       // console.log(err);
       res.status(400).json(err);
@@ -98,25 +63,12 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
 
-  Product.destroy({
+  Tag.destroy({
       where: {
         id: req.params.id
       },
      })
-
-    .then((tag) => {
-      if (req.body.id.length) {
-        const tagIdArr = req.body.id.map((id) => {
-          return {
-            id: req.params.id ,
-            tag_name,
-          };
-        });
-        return Tag.bulkCreate(tagIdArr);
-      }
-      res.status(200).json(tag);
-    })
-    .then((tagIds) => res.status(200).json(tagIds))
+    .then((tag) => res.status(200).json(tag))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);

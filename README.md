@@ -16,7 +16,7 @@
 
 ## Project Description 
 
-For our 11th Project I wanted to make a E-Commerce Back-End. My projects are on display via Github, with clickable images as well as my resume in a clickable PDF file. 
+For our 11th Project I wanted to make a E-Commerce Back-End. To connect all my routes with the seeded data. and be able to add, update, delete and move to the Database. My projects are on display via Github, with clickable images as well as my resume in a clickable PDF file. 
 
 ---
 
@@ -31,7 +31,11 @@ Link to deployed website: https://github.com/meyerbw10/E-commerce-Back-End
 ### Usage
 DEMO VIDEO:
 
-<!-- https://www.youtube.com/watch?v=THdh8gBNOcc -->
+https://www.youtube.com/watch?v=PXs1ChSZb50
+
+--- 
+
+DEMO PHOTO: ![](hw13%20pic1.png)
 
 ---
 
